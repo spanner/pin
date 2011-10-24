@@ -22,14 +22,14 @@
       
     %p
       = f.label :lat
-      = f.hidden_field :lat
-      = @poi.lat
-      \&nbsp;
+      = f.hidden_field :lat, :class => 'lat'
+      %span.lat
+        = @poi.lat
+      %br
       = f.label :lng
-      = f.hidden_field :lng
-      = @poi.lng
-
-
+      = f.hidden_field :lng, :class => 'lng'
+      %span.lng
+        = @poi.lng
 
   .actions
     = f.submit

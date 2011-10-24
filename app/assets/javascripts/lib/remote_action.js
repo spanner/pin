@@ -27,7 +27,7 @@
         });
         if (ajaxable) {
           e.preventDefault();
-          $.post(self.form.attr('action'), self.form.serialize(), self.step, 'html');  
+          $.post(self.form.attr('action'), self.form.serialize(), self.step, 'html');
         } else {
           return true;  // allow event through so that form is sent by normal HTTP POST
         }
@@ -40,6 +40,7 @@
         if (self.form.length > 0) {
           // intermediate step: hook up the new form
           self.form.submit(self.submit);
+          if (self.holder.process_form) self.holder.process_form(self.form);
           self.show();
         } else {
           // final step: complete replacement with outcome
@@ -79,6 +80,7 @@
     $.extend(self, {
       container: container,
       wrapper: container.find('.wrapper'),
+      process_form: conf['process_form'],
       actions: {},
       initActions: function () {
         self.actions = {};

@@ -125,21 +125,25 @@ body
       weight: normal
     letter-spacing: 0.02em
     margin: 0
-    a.edit
+    a.edit, a.delete
       display: inline-block
       overflow: hidden
-      width: 24px
-      height: 24px
+      width: 16px
+      height: 16px
       text-indent: -500px
       background:
         color: transparent
-        image: url(asset_path('cog.png', image))
         repeat: no-repeat
         position: top left
       &:hover
         background-position: bottom left
       &.waiting
         background-image: url(asset_path('spinner.gif', image))
+    a.edit
+      background-image: url(asset_path('cog.png', image))
+    a.delete
+      background-image: url(asset_path('X.png', image))
+    
   p
     font-family: 'hattori'
   a.edit

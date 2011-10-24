@@ -7,7 +7,9 @@ class PoisController < ApplicationController
   end
   
   def show
-    respond_with(@poi = Poi.find(params[:id]))
+    Rails.logger.warn "show! @poi is #{@poi}"
+    @poi ||= Poi.find(params[:id])
+    respond_with(@poi)
   end
 
   def new
@@ -15,7 +17,9 @@ class PoisController < ApplicationController
   end
 
   def create
-    respond_with(@poi = Poi.create(params[:poi]))
+    @poi = Poi.create(params[:poi])
+    Rails.logger.warn "created! @poi is #{@poi}"
+    redirect_to :action => :show, :id => @poi.id
   end
 
   def edit
