@@ -1,0 +1,6 @@
+.wrapper
+  %h3
+    = @poi.name
+    = link_to 'edit', edit_poi_url(@poi), :class => 'edit remote'
+  %p
+    = @poi.description

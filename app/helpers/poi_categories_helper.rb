@@ -1,0 +1,2 @@
+module PoiCategoriesHelper
+end

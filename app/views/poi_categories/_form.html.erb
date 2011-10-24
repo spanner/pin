@@ -1,0 +1,17 @@
+<%= form_for(@poi_category) do |f| %>
+  <% if @poi_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@poi_category.errors.count, "error") %> prohibited this poi_category from being saved:</h2>
+
+      <ul>
+      <% @poi_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

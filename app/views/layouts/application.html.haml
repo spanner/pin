@@ -1,0 +1,12 @@
+!!! 5
+%html
+  %head
+    %title pin.spanner.org
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    %script{:type => "text/javascript", :src => "http://maps.googleapis.com/maps/api/js?sensor=false"}
+    %meta{:name => 'viewport', :content => "initial-scale=1.0, user-scalable=no"}
+    = csrf_meta_tag
+    
+%body
+  = yield

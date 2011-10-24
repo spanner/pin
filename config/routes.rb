@@ -1,4 +1,9 @@
 Poier::Application.routes.draw do
+  resources :poi_sets
+  resources :poi_categories
+  resources :pois
+  root :to => 'pois#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

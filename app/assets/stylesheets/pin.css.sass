@@ -1,0 +1,165 @@
+// Place all the styles related to the pois controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$rubinered: #d1005d
+$coolgrey0: #f1f0ee
+$coolgrey1: #e2e1dd
+$coolgrey2: #d6d6d4
+$coolgrey3: #cacac8
+$coolgrey4: #bdbdbd
+$coolgrey5: #b3b3b3
+$coolgrey6: #afafaf
+$coolgrey7: #9a9b9d
+$coolgrey8: #8c8d8e
+$coolgrey9: #747679
+$coolgrey10: #616265
+$coolgrey11: #4d4e53
+$rubinered: #d1005d
+
+$dark: $coolgrey11
+$mid: $coolgrey8
+$pale: $coolgrey6
+$paler: $coolgrey4
+$verypale: $coolgrey2
+$link: $rubinered
+
+
+@font-face 
+  font-family: 'league'
+  src: url('/fonts/league_gothic.eot')
+  src: url('/fonts/league_gothic.eot?#iefix') format('embedded-opentype'), url('/fonts/league_gothic.woff') format('woff'), url('/fonts/league_gothic.ttf') format('truetype'), url('/fonts/league_gothic.svg#OstrichSansRoundedMedium') format('svg')
+  font-weight: normal
+  font-style: normal
+
+@font-face 
+  font-family: 'ostrich'
+  src: url('/fonts/ostrich-rounded-webfont.eot')
+  src: url('/fonts/ostrich-rounded-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/ostrich-rounded-webfont.woff') format('woff'), url('/fonts/ostrich-rounded-webfont.ttf') format('truetype'), url('/fonts/ostrich-rounded-webfont.svg#OstrichSansRoundedMedium') format('svg')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'hattori'
+  src: url('/fonts/Hattori_Hanzo-webfont.eot')
+  src: url('/fonts/Hattori_Hanzo-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/Hattori_Hanzo-webfont.woff') format('woff'), url('/fonts/Hattori_Hanzo-webfont.ttf') format('truetype'), url('/fonts/Hattori_Hanzo-webfont.svg#HattoriHanzoLight') format('svg')
+  font-weight: normal
+  font-style: normal
+
+=matte($blur: 3px, $color: black)
+  text-shadow: 0 0 $blur $color
+
+=glow($radius: 3px)
+  +matte($radius, white)
+
+html
+  height: 100%
+body 
+  height: 100%
+  margin: 0
+  padding: 0
+#map_canvas
+  height: 100%
+#shelf
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  width: 200px
+  background-color: white
+  padding: 10px
+  @include box-shadow(#333, -2px, 0, 4px)
+  ul
+    font-family: 'hattori'
+    list-style: square
+    padding-left: 20px
+    font-size: 80%
+#overlay
+  position: absolute
+  display: none
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: white
+  opacity: 0.7
+#welcome
+  position: absolute
+  display: none
+  bottom: 50px
+  left: 90px
+  h1
+    font-family: 'league'
+    font-size: 3200%
+    line-height: 1
+    margin: 0
+    +glow(20px)
+  form
+    position: relative
+    margin-left: 80px
+    margin-top: -55px
+    p
+      margin: 0
+      label
+        font-family: 'hattori'
+        font-size: 160%
+        line-height: 1.1
+        float: left
+        padding: 6px
+      input
+        float: left
+        width: 440px
+        font-size: 260%
+        font-family: 'hattori'
+        color: $rubinered
+        padding: 6px
+.pinbox
+  width: 300px
+  height: 300px
+  overflow-x: hidden
+  overflow-y: auto
+  h3
+    font:
+      family: 'league'
+      size: 200%
+      weight: normal
+    letter-spacing: 0.02em
+    margin: 0
+    a.edit
+      display: inline-block
+      overflow: hidden
+      width: 24px
+      height: 24px
+      text-indent: -500px
+      background:
+        color: transparent
+        image: url(asset_path('cog.png', image))
+        repeat: no-repeat
+        position: top left
+      &:hover
+        background-position: bottom left
+      &.waiting
+        background-image: url(asset_path('spinner.gif', image))
+  p
+    font-family: 'hattori'
+  a.edit
+    color: #666
+  form
+    label
+      color: $rubinered
+    input, textarea, select
+      color: $coolgrey8
+      padding: 4px
+      border: 1px solid $coolgrey4
+    input.standard, textarea.standard
+      width: 90%
+      font:
+        family: 'hattori'
+        size: 12px
+    textarea.standard
+      height: 90px
+      
+      
+      
+      
+      
