@@ -11,4 +11,5 @@
 #= require_tree .
 $ ->
   $('#map_canvas').init_map().init_pins()
+  $('form.where').geolocator()
   true

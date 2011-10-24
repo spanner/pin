@@ -69,16 +69,30 @@ body
   background-color: white
   padding: 10px
   @include box-shadow(#333, -2px, 0, 4px)
-  h2
+  #admin
+    position: absolute
+    bottom: 0
+    left: 0
+  h2, h3
     font-family: 'league'
-    font-size: 500%
-    margin: 0 0 5px 16px
     font-weight: normal
-  ul
+  form
+    margin: 0 0 5px 16px
+  h2
+    font-size: 800%
+    margin: 0 0 5px 6px
+  h3
+    font-size: 250%
+    margin: 0 0 5px 16px
+  ul#markers
     font-family: 'hattori'
-    list-style: square
-    padding-left: 20px
+    list-style: none
+    padding-left: 35px
     font-size: 80%
+    height: 400px
+    overflow-y: auto
+    overflow-x: hidden
+    margin: -20px 0 5px 0
 #overlay
   position: absolute
   display: none
@@ -166,7 +180,7 @@ body
         width: 90%
         font:
           family: 'hattori'
-          size: 12px
+          size: 90%
     textarea.standard
       height: 90px
       

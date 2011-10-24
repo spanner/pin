@@ -15,7 +15,7 @@ jQuery ($) ->
       options = 
         mapTypeId: google.maps.MapTypeId.ROADMAP
         center: latlng
-        zoom: 14
+        zoom: 16
       map = new google.maps.Map this, options
       markerlist = $('#markers')
       newPin = (e) ->
@@ -93,3 +93,20 @@ jQuery ($) ->
       listing = $ '<li><a href="#">' + poi.name + "</a></li>"
       markerlist.append listing
       (listing.find "a").click openWindow
+
+  $.fn.geolocator = () ->
+    geocoder = new google.maps.Geocoder()
+    this.submit (e) ->
+      e.preventDefault()
+      field = $(this).find('input')
+      value = field.val()
+      parameters = 
+        address: value
+      mover = (results, status) ->
+        if status == google.maps.GeocoderStatus.OK
+          map.panTo results[0].geometry.location
+        else
+          console.log("no match for ", value)
+      console.log(parameters, mover)
+      geocoder.geocode parameters, mover
+
