@@ -21,9 +21,9 @@
       = f.text_area :description, :class => 'standard'
 
     %p
-      = f.label :poi_category
+      = f.label :poi_category_id
       %br
-      = f.select :poi_category, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => false}, {:class => 'standard'}
+      = f.select :poi_category_id, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => false}, {:class => 'standard'}
 
   .actions
     %p
