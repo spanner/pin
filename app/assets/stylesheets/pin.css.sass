@@ -149,17 +149,19 @@ body
   a.edit
     color: #666
   form
+    p
+      margin-top: 0
     label
       color: $rubinered
     input, textarea, select
       color: $coolgrey8
       padding: 4px
       border: 1px solid $coolgrey4
-    input.standard, textarea.standard
-      width: 90%
-      font:
-        family: 'hattori'
-        size: 12px
+      &.standard
+        width: 90%
+        font:
+          family: 'hattori'
+          size: 12px
     textarea.standard
       height: 90px
       

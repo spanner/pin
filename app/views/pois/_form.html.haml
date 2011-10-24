@@ -23,8 +23,14 @@
     %p
       = f.label :poi_category
       %br
-      = f.select :poi_category, :class => 'standard'
-      
+      = f.select :poi_category, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true}, {:class => 'standard'}
+
+  .actions
+    %p
+      = f.submit
+      or
+      = link_to 'cancel', '#', :class => 'cancel'
+
     %p
       = f.label :lat
       = f.hidden_field :lat, :class => 'lat'
@@ -35,8 +41,3 @@
       = f.hidden_field :lng, :class => 'lng'
       %span.lng
         = @poi.lng
-
-  .actions
-    = f.submit
-    or
-    = link_to 'cancel', '#', :class => 'cancel'
