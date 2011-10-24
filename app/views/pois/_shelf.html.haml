@@ -2,3 +2,15 @@
   %h2
     pin
   %ul#markers
+
+  #admin
+    %h3
+      jump to
+    %form
+      = text_field_tag "where", :class => 'where'
+    %h3
+      download
+    %ul
+      %li plist
+      %li json
+      %li csv
