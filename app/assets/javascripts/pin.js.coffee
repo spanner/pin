@@ -93,4 +93,9 @@ jQuery ($) ->
       listing = $ '<li><a href="#">' + poi.name + "</a></li>"
       markerlist.append listing
       (listing.find "a").click openWindow
-      
+ 
+  $.deletePoi = (id) ->
+    if confirm "really delete that pin?"
+      # delete that pin
+    
+    
