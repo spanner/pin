@@ -1,7 +1,6 @@
 #map_canvas
 #poi_list
-#shelf
-  %ul#markers
+= render :partial => 'shelf'
 #overlay
 #welcome
   %h1
@@ -13,15 +12,3 @@
         %br
         we start?
       %input{:type => "text", :name => "where"}
-     
-/      
-/ shrink overlay towards a similar field at the bottom of a marginal block on the right that mostly contains a list of points
-/ clicking in marginal list scrolls to and pops up infowindow
-/ entering a place name always jumps to there
-/ 
-/ 
-/ job for Mike: list of tourist attractions (especially with a historical bent) in the city of London, with a paragraph for each.
-/ 
-/ 
-/ we also need monuments, fragments of relevant historical narrative (death of wat tyler), useful things. concentrate especially on the route.
-/    
