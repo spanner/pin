@@ -12,6 +12,10 @@ gem 'haml'
 gem 'coffee-script'
 gem 'geokit-rails3'
 
+group :production do
+  gem "therubyracer", '~> 0.9.8', :require => 'v8'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

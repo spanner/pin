@@ -23,7 +23,7 @@
     %p
       = f.label :poi_category
       %br
-      = f.select :poi_category, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => true}, {:class => 'standard'}
+      = f.select :poi_category, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => false}, {:class => 'standard'}
 
   .actions
     %p
