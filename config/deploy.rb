@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "pin"
 set :repository,  "git@github.com:spanner/pin.git"
 
@@ -14,7 +16,7 @@ set :branch, 'master'
 
 role :web, "seagoon.spanner.org"                          # Your HTTP server, Apache/etc
 role :app, "seagoon.spanner.org"                          # This may be the same as your `Web` server
-role :db,  "data.spanner.org", :primary => true           # This is where Rails migrations will run
+# role :db,  "eccles.spanner.org", :primary => true           # This is where Rails migrations will run
 # role :db,  "your slave db-server here"
 
 after "deploy:update", "deploy:cleanup"
