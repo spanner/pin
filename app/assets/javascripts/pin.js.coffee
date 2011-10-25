@@ -64,15 +64,18 @@ jQuery ($) ->
       update: (data) =>
         heading = $(data).find('h3')
         label = heading.text().replace ' edit', ''
-        cat = heading.attr('class')
         this.id = heading.attr('id')
         this.name = label
         this.linker.text(this.name)
-        if cat
+        cat = heading.attr('class')
+        if cat && cat != this.cat
+          if oldcatpin = catpins[this.cat].indexOf this
+            catpins[this.cat].splice oldcatpin, 1
+          catpins[cat].push this
+          this.cat = cat
           new_icon = markers[cat] || markers['plain']
           this.marker.setIcon(new_icon)
       move: (e) =>
-        console.log "pin.move", e.latLng
         this.marker.setAnimation(google.maps.Animation.BOUNCE)
         this.linker.addClass('waiting')
         finished = () =>
@@ -131,7 +134,6 @@ jQuery ($) ->
       map = new google.maps.Map this, options
       markerlist = $('#markers')
       newPin = (e) =>
-        console.log "newpin!"
         pin = new Pin
           id: "new"
           name: "new pin"
@@ -154,18 +156,13 @@ jQuery ($) ->
       mover = (results, status) ->
         if status == google.maps.GeocoderStatus.OK
           map.panTo results[0].geometry.location
-        else
-          console.log("no match for ", value)
-      console.log(parameters, mover)
       geocoder.geocode parameters, mover
 
   $.fn.category_toggler = () ->
     this.each ->
       ($ this).click (e) ->
         link = $ this
-        console.log link
         cat = link.attr('rel')
-        console.log "toggle", cat
         if catpins[cat]
           if link.hasClass('disabled')
             link.removeClass('disabled')
