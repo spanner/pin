@@ -10,6 +10,6 @@
 #= require lib/jquery.lettering
 #= require_tree .
 $ ->
-  $('#map_canvas').init_map().init_pins()
+  $('#map_canvas').init_map().get_pins()
   $('form.where').geolocator()
   true

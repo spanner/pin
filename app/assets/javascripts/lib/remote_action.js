@@ -1,7 +1,8 @@
 (function($) { 
+  $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script;
+
   function RemoteAction (url, holder) {
     var self = this;
-    $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script;
     
     $.extend(self, {
       url: url,
@@ -40,10 +41,12 @@
         if (self.form.length > 0) {
           // intermediate step: hook up the new form
           self.form.submit(self.submit);
-          if (self.holder.process_form) self.holder.process_form(self.form);
+          // call any preprocessor function passed in
+          if (self.holder.preprocess) self.holder.preprocess(self.form);
           self.show();
         } else {
           // final step: complete replacement with outcome
+          if (self.holder.postprocess) self.holder.postprocess(results);
           holder.replaceWith(results);
         }
       },
@@ -80,7 +83,8 @@
     $.extend(self, {
       container: container,
       wrapper: container.find('.wrapper'),
-      process_form: conf['process_form'],
+      preprocess: conf['preprocess'],
+      postprocess: conf['postprocess'],
       actions: {},
       initActions: function () {
         self.actions = {};

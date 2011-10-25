@@ -1,5 +1,5 @@
 .wrapper
-  %h3
+  %h3{:id => @poi.id}
     = @poi.name
     = link_to 'edit', edit_poi_url(@poi), :class => 'edit remote'
   %p
