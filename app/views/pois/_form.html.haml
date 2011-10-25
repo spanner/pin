@@ -24,8 +24,6 @@
       = f.label :poi_category_id
       %br
       = f.select :poi_category_id, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => false}, {:class => 'standard'}
-      %br
-      = link_to 'add a category', new_poi_category_url, :class => 'add quiet popup'
       
   .actions
     %p

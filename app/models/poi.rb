@@ -3,6 +3,8 @@ require 'geokit'
 class Poi < ActiveRecord::Base
   belongs_to :poi_category
   belongs_to :poi_set
+  
+  # accepts_nested_attributes_for :poi_category
 
   def cat
     poi_category.name if poi_category

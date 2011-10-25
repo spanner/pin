@@ -12,6 +12,7 @@ jQuery ($) ->
   anchor = new google.maps.Point 18, 36
   markers = 
     processional: new google.maps.MarkerImage '/pins/coach.png', size, origin, anchor
+    building: new google.maps.MarkerImage '/pins/building.png', size, origin, anchor
     toilet: new google.maps.MarkerImage '/pins/loo.png', size, origin, anchor
     accessible: new google.maps.MarkerImage '/pins/accessible_loo.png', size, origin, anchor
     tube: new google.maps.MarkerImage '/pins/tube.png', size, origin, anchor
