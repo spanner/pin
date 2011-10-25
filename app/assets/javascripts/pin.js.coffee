@@ -47,11 +47,15 @@ jQuery ($) ->
       hide: () =>
         this.close()
         this.marker.setMap null
+        this.linker.addClass('disabled')
       show: () =>
         this.marker.setMap this.map
+        this.linker.removeClass('disabled')
       open: () =>
         p.close() for p in pins
         this.bubble.open this.map, this.marker
+      open_if_enabled: () =>
+        this.open() unless this.linker.hasClass('disabled')
       close: () =>
         this.bubble.close()
       cancel: () =>
@@ -106,7 +110,7 @@ jQuery ($) ->
     this.bubble.setContent(content[0])
     $('#markers').append('<li></li>').append this.linker
 
-    this.linker.click this.open
+    this.linker.click this.open_if_enabled
     google.maps.event.addListener this.marker, 'dragend', this.move
     google.maps.event.addListener this.marker, 'click', this.open
     this.open() if this.unsaved
