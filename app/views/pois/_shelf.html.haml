@@ -2,6 +2,13 @@
   %h2
     pin
   %ul#markers
+  
+  %h3
+    categories
+  %ul#categories
+    - PoiCategory.all.each do |cat|
+      %li
+        = link_to cat.name, '#', :class => 'cat', :rel => cat.name
 
   #admin
     %h3

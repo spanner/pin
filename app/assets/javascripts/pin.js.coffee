@@ -4,6 +4,7 @@
 
 jQuery ($) ->
   pins = []
+  catpins = {}
   map = null;
   $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script
   
@@ -30,6 +31,7 @@ jQuery ($) ->
     properties =
       id: poi.id
       label: poi.name
+      cat: poi.cat
       description: poi.description
       unsaved: poi.id == 'new'
       map: map
@@ -42,6 +44,11 @@ jQuery ($) ->
         shadow: markers['shadow']
       bubble: new google.maps.InfoWindow
       linker: $ '<a href="#">' + poi.name + '</a>'
+      hide: () =>
+        this.close()
+        this.marker.setMap null
+      show: () =>
+        this.marker.setMap this.map
       open: () =>
         p.close() for p in pins
         this.bubble.open this.map, this.marker
@@ -91,7 +98,7 @@ jQuery ($) ->
     else
       ed = ' <a href="/pois/' + this.id + '/edit" class="edit remote">edit</a>'
       del = ' <a href="/pois/' + this.id + '/destroy" class="delete remote">delete</a>'
-      content = $ '<div class="pinbox"><div class="wrapper"><h3>' + this.label + ed + del + '</h3><p>' + this.description + '</p>'
+      content = $ '<div class="pinbox"><div class="wrapper"><h3>' + this.label + ed + del + '</h3><p>' + this.description + '</p><p>Category: ' + this.cat + '</p>'
 
     content.enable_remote_actions
       preprocess: this.populate
@@ -105,6 +112,8 @@ jQuery ($) ->
     this.open() if this.unsaved
     
     pins.push this
+    catpins[this.cat] ?= []
+    catpins[this.cat].push this
     this
 
 
@@ -146,5 +155,18 @@ jQuery ($) ->
       console.log(parameters, mover)
       geocoder.geocode parameters, mover
 
-
-
+  $.fn.category_toggler = () ->
+    this.each ->
+      ($ this).click (e) ->
+        link = $ this
+        console.log link
+        cat = link.attr('rel')
+        console.log "toggle", cat
+        if catpins[cat]
+          if link.hasClass('disabled')
+            link.removeClass('disabled')
+            pin.show() for pin in catpins[cat]
+          else
+            link.addClass('disabled')
+            pin.hide() for pin in catpins[cat]
+        

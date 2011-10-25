@@ -12,4 +12,5 @@
 $ ->
   $('#map_canvas').init_map().get_pins()
   $('form.where').geolocator()
+  $('a.cat').category_toggler()
   true
