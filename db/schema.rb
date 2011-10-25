@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20111025112940) do
     t.string   "icon"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "shadow"
   end
 
   create_table "poi_sets", :force => true do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20111025112940) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "url"
   end
 
 end

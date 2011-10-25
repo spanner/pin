@@ -22,6 +22,7 @@ jQuery ($) ->
     walk: new google.maps.MarkerImage '/pins/walk.png', size, origin, anchor
     firstaid: new google.maps.MarkerImage '/pins/redcross.png', size, origin, anchor
     museum: new google.maps.MarkerImage '/pins/museum.png', size, origin, anchor
+    history: new google.maps.MarkerImage '/pins/historical.png', size, origin, anchor
     plain: new google.maps.MarkerImage '/pins/plain.png', size, origin, anchor
     shadow: new google.maps.MarkerImage '/pins/shadow.png', size, origin, anchor
   
