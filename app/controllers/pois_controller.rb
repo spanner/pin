@@ -28,7 +28,10 @@ class PoisController < ApplicationController
   def update
     @poi = Poi.find(params[:id])
     @poi.update_attributes(params[:poi])
-    redirect_to :action => :show
+    respond_with(@poi) do |format|
+      format.html { redirect_to :action => :index }
+      format.js { redirect_to :action => :show }
+    end
   end
 
 end

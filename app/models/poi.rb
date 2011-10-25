@@ -5,6 +5,8 @@ class Poi < ActiveRecord::Base
   belongs_to :poi_set
   
   # accepts_nested_attributes_for :poi_category
+  
+  has_attached_file :image, :styles => {:icon => '36x36#', :app => '640x480#', :test => '320x240#'}
 
   def cat
     poi_category.name if poi_category
@@ -14,16 +16,8 @@ class Poi < ActiveRecord::Base
     poi_category.icon if poi_category
   end
   
-  def image
-    
-  end
-  
-  def url
-    
-  end
-
   def as_json(options={})
-    {
+    basis = {
       :id => id,
       :name => name,
       :description => description,
@@ -31,9 +25,10 @@ class Poi < ActiveRecord::Base
       :lat => lat,
       :lng => lng,
       :cat => cat,
-      :image => image,
       :url => url
     }
+    basis[:image] = image.url(:test) if image?
+    basis
   end
 
 end

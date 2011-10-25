@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111020165422) do
+ActiveRecord::Schema.define(:version => 20111025112940) do
 
   create_table "poi_categories", :force => true do |t|
     t.string   "name"
@@ -27,11 +27,18 @@ ActiveRecord::Schema.define(:version => 20111020165422) do
 
   create_table "pois", :force => true do |t|
     t.string   "name"
-    t.decimal  "lat",             :precision => 15, :scale => 10
-    t.decimal  "lng",             :precision => 15, :scale => 10
+    t.text     "description"
+    t.decimal  "lat",                :precision => 15, :scale => 10
+    t.decimal  "lng",                :precision => 15, :scale => 10
+    t.text     "address"
     t.integer  "poi_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "poi_set_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

@@ -11,6 +11,7 @@ gem 'json'
 gem 'haml'
 gem 'coffee-script'
 gem 'geokit-rails3'
+gem "paperclip", "~> 2.4"
 
 group :production do
   gem "therubyracer", '~> 0.9.8', :require => 'v8'

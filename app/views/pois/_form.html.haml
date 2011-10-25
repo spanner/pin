@@ -1,4 +1,4 @@
-= form_for(@poi) do |f|
+= form_for(@poi, :html => { :multipart => true }) do |f|
   - if @poi.errors.any?
     .error_explanation
       %h4
@@ -9,7 +9,6 @@
           %li= msg
 
   .edit
-  
     %p
       = f.label :name
       %br
@@ -19,6 +18,11 @@
       = f.label :description
       %br
       = f.text_area :description, :class => 'standard'
+
+    %p
+      = f.label :image
+      %br
+      = f.file_field :image
 
     %p
       = f.label :poi_category_id

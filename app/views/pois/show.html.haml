@@ -1,4 +1,7 @@
 .wrapper
+  - if @poi.image?
+    = image_tag @poi.image.url(:test)
+
   %h3{:id => @poi.id, :class => @poi.poi_category.name}
     = @poi.name
     = link_to 'edit', edit_poi_url(@poi), :class => 'edit remote'

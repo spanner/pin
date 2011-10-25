@@ -18,7 +18,9 @@
 					%key name
 					%string= m.name
 					%key popupimage
-					%string= m.image
+					%string
+						- if m.image
+							= "http://pin.spanner.org#{m.image.url(:app)}"
 					%key popuptext
 					%string= m.description
 					%key popupurl

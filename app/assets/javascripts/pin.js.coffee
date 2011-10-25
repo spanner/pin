@@ -103,9 +103,11 @@ jQuery ($) ->
     if this.unsaved
       content = $ '<div class="pinbox"><div class="wrapper"><a href ="/pois/new" class="remote autoload">New Pin</a></div></div>'
     else
+      img = '<img src="' + poi.image + '" width="320" height="240" class="img" />' if poi.image
+      img ?= ''
       ed = ' <a href="/pois/' + this.id + '/edit" class="edit remote">edit</a>'
       del = ' <a href="/pois/' + this.id + '/destroy" class="delete remote">delete</a>'
-      content = $ '<div class="pinbox"><div class="wrapper"><h3>' + this.label + ed + del + '</h3><p>' + this.description + '</p><p>Category: ' + this.cat + '</p>'
+      content = $ '<div class="pinbox"><div class="wrapper">' + img + '<h3>' + this.label + ed + del + '</h3><p>' + this.description + '</p><p>Category: ' + this.cat + '</p>'
 
     content.enable_remote_actions
       preprocess: this.populate
