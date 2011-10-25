@@ -1,0 +1,28 @@
+!!! XML
+%plist{:version => 1}
+	%dict
+		%key
+			ms
+		%array
+			- @markers.each do |m|
+				%dict
+					%key category
+					%string= m.cat
+					%key iconpath
+					%string= m.icon
+					%key iconversion
+					%string= 1
+					%key latitude
+					%string= m.lat
+					%key longitude
+					%string= m.lng
+					%key name
+					%string= m.name
+					%key popupimage
+					%string= m.image
+					%key popuptext
+					%string= m.description
+					%key popupurl
+					%string= m.url
+		%key revisionnumber
+		%integer 1

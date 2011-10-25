@@ -1,5 +1,5 @@
 class PoisController < ApplicationController
-  respond_to :html, :xml, :json, :js
+  respond_to :html, :xml, :json, :js, :csv
 
   def index
     @markers = Poi.all
