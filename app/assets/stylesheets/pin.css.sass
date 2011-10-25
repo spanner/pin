@@ -33,6 +33,13 @@ $link: $rubinered
   font-style: normal
 
 @font-face 
+  font-family: 'prociono'
+  src: url('/fonts/prociono.eot')
+  src: url('/fonts/prociono.eot?#iefix') format('embedded-opentype'), url('/fonts/prociono.woff') format('woff'), url('/fonts/prociono.ttf') format('truetype'), url('/fonts/prociono.svg#OstrichSansRoundedMedium') format('svg')
+  font-weight: normal
+  font-style: normal
+
+@font-face 
   font-family: 'ostrich'
   src: url('/fonts/ostrich-rounded-webfont.eot')
   src: url('/fonts/ostrich-rounded-webfont.eot?#iefix') format('embedded-opentype'), url('/fonts/ostrich-rounded-webfont.woff') format('woff'), url('/fonts/ostrich-rounded-webfont.ttf') format('truetype'), url('/fonts/ostrich-rounded-webfont.svg#OstrichSansRoundedMedium') format('svg')
@@ -68,31 +75,42 @@ body
   width: 200px
   background-color: white
   padding: 10px
-  @include box-shadow(#333, -2px, 0, 4px)
   #admin
     position: absolute
     bottom: 0
     left: 0
   h2, h3
-    font-family: 'league'
+    font-family: 'prociono'
     font-weight: normal
   form
     margin: 0 0 5px 16px
   h2
     font-size: 800%
-    margin: 0 0 5px 6px
+    margin: -20px 0 5px 0
   h3
-    font-size: 250%
     margin: 0 0 5px 16px
+  p
+    margin: 0 0 5px 16px
+    font-family: 'hattori'
+    font-size: 80%
   ul#markers
     font-family: 'hattori'
     list-style: none
-    padding-left: 35px
+    padding-left: 25px
     font-size: 80%
     height: 400px
     overflow-y: auto
     overflow-x: hidden
-    margin: -20px 0 5px 0
+    margin: -25px 0 5px 0
+    a
+      padding-left: 20px
+      background:
+        repeat: no-repeat
+        position: top left
+      &.waiting
+        color: $coolgrey4
+        background-image: url(asset_path('spinner.gif', image))
+        
 #overlay
   position: absolute
   display: none
@@ -108,7 +126,7 @@ body
   bottom: 50px
   left: 90px
   h1
-    font-family: 'league'
+    font-family: 'prociono'
     font-size: 3200%
     line-height: 1
     margin: 0
@@ -139,7 +157,7 @@ body
   overflow-y: auto
   h3
     font:
-      family: 'league'
+      family: 'prociono'
       size: 200%
       weight: normal
     letter-spacing: 0.02em

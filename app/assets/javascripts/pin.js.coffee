@@ -7,11 +7,25 @@ jQuery ($) ->
   map = null;
   $.ajaxSettings.accepts.html = $.ajaxSettings.accepts.script
   
+  size = new google.maps.Size 36, 36
+  origin = new google.maps.Point 0, 0
+  anchor = new google.maps.Point 18, 36
+  markers = 
+    processional: new google.maps.MarkerImage '/pins/coach.png', size, origin, anchor
+    toilet: new google.maps.MarkerImage '/pins/loo.png', size, origin, anchor
+    accessible: new google.maps.MarkerImage '/pins/accessible_loo.png', size, origin, anchor
+    tube: new google.maps.MarkerImage '/pins/tube.png', size, origin, anchor
+    rail: new google.maps.MarkerImage '/pins/station.png', size, origin, anchor
+    waterbus: new google.maps.MarkerImage '/pins/pier.png', size, origin, anchor
+    walk: new google.maps.MarkerImage '/pins/walk.png', size, origin, anchor
+    firstaid: new google.maps.MarkerImage '/pins/redcross.png', size, origin, anchor
+    museum: new google.maps.MarkerImage '/pins/museum.png', size, origin, anchor
+    plain: new google.maps.MarkerImage '/pins/plain.png', size, origin, anchor
+    shadow: new google.maps.MarkerImage '/pins/shadow.png', size, origin, anchor
+  
   Pin = (poi) ->
-    console.log "new pin:", poi
     latLng = poi.latLng || new google.maps.LatLng poi.lat, poi.lng
-    console.log "latLng:", latLng
-    
+    marker_icon = markers[poi.cat] || markers['plain']
     properties =
       id: poi.id
       label: poi.name
@@ -23,6 +37,8 @@ jQuery ($) ->
         map: map
         title: poi.name
         draggable: true
+        icon: marker_icon
+        shadow: markers['shadow']
       bubble: new google.maps.InfoWindow
       linker: $ '<a href="#">' + poi.name + '</a>'
       open: () =>
@@ -36,12 +52,29 @@ jQuery ($) ->
       update: (data) =>
         heading = $(data).find('h3')
         label = heading.text().replace ' edit', ''
+        cat = heading.attr('class')
         this.id = heading.attr('id')
         this.name = label
-        console.log "pin.update", this.name
         this.linker.text(this.name)
+        if cat
+          new_icon = markers[cat] || markers['plain']
+          this.marker.setIcon(new_icon)
       move: (e) =>
         console.log "pin.move", e.latLng
+        this.marker.setAnimation(google.maps.Animation.BOUNCE)
+        this.linker.addClass('waiting')
+        finished = () =>
+          this.marker.setAnimation(null);
+          this.linker.removeClass('waiting')
+        $.ajax
+          url: "/pois/" + this.id + ".json"
+          dataType: 'json'
+          data:
+            poi:
+              lat: e.latLng.lat()
+              lng: e.latLng.lng()
+          type: "PUT"
+          success: finished
       populate: (form) =>
         if this.unsaved
           (form.find 'span.lat').text this.marker.position.lat()
@@ -58,10 +91,10 @@ jQuery ($) ->
       ed = ' <a href="/pois/' + this.id + '/edit" class="edit remote">edit</a>'
       del = ' <a href="/pois/' + this.id + '/destroy" class="delete remote">delete</a>'
       content = $ '<div class="pinbox"><div class="wrapper"><h3>' + this.label + ed + del + '</h3><p>' + this.description + '</p>'
+
     content.enable_remote_actions
       preprocess: this.populate
       postprocess: this.update
-
     this.bubble.setContent(content[0])
     $('#markers').append('<li></li>').append this.linker
 
@@ -72,7 +105,6 @@ jQuery ($) ->
     
     pins.push this
     this
-
 
 
   $.fn.init_map = () ->

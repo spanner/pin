@@ -7,7 +7,6 @@ class PoisController < ApplicationController
   end
   
   def show
-    Rails.logger.warn "show! @poi is #{@poi}"
     @poi ||= Poi.find(params[:id])
     respond_with(@poi)
   end
