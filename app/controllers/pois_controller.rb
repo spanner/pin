@@ -17,8 +17,10 @@ class PoisController < ApplicationController
 
   def create
     @poi = Poi.create(params[:poi])
-    Rails.logger.warn "created! @poi is #{@poi}"
-    redirect_to :action => :show, :id => @poi.id
+    respond_with(@poi) do |format|
+      format.html { redirect_to :action => :index }
+      format.js { redirect_to :action => :show, :id => @poi.id}
+    end
   end
 
   def edit

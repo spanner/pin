@@ -19,10 +19,13 @@
       %br
       = f.text_area :description, :class => 'standard'
 
+    - if @poi.image?
+      = image_tag @poi.image.url(:icon), :class => 'thumbnail left'
+
     %p
       = f.label :image
       %br
-      = f.file_field :image
+      = f.file_field :image, :class => 'file'
 
     %p
       = f.label :poi_category_id
