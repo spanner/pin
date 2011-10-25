@@ -28,6 +28,11 @@
       = f.label :poi_category_id
       %br
       = f.select :poi_category_id, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => false}, {:class => 'standard'}
+
+    %p
+      = f.label :url
+      %br
+      = f.text_field :url, :class => 'standard'
       
   .actions
     %p

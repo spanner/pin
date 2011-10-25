@@ -61,10 +61,19 @@ $link: $rubinered
 
 html
   height: 100%
+  
 body 
   height: 100%
   margin: 0
   padding: 0
+  color: $coolgrey11
+
+a
+  text-decoration: none
+  color: $rubinered
+  &:hover
+    color: black
+  
 #map_canvas
   height: 100%
 #shelf
@@ -177,6 +186,7 @@ body
       size: 200%
       weight: normal
     letter-spacing: 0.02em
+    line-height: 1.05
     margin: 0
     a.edit, a.delete
       display: inline-block

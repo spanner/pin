@@ -3,7 +3,10 @@
     = image_tag @poi.image.url(:test)
 
   %h3{:id => @poi.id, :class => @poi.poi_category.name}
-    = @poi.name
+    - if @poi.url
+      = link_to @poi.name, @poi.url
+    - else
+      = @poi.name
     = link_to 'edit', edit_poi_url(@poi), :class => 'edit remote'
   %p
     = @poi.description

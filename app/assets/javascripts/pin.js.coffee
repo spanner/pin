@@ -32,7 +32,7 @@ jQuery ($) ->
     marker_icon = markers[poi.cat] || markers['plain']
     properties =
       id: poi.id
-      label: poi.name
+      name: poi.name
       cat: poi.cat
       description: poi.description
       unsaved: poi.id == 'new'
@@ -109,7 +109,9 @@ jQuery ($) ->
       img ?= ''
       ed = ' <a href="/pois/' + this.id + '/edit" class="edit remote">edit</a>'
       del = ' <a href="/pois/' + this.id + '/destroy" class="delete remote">delete</a>'
-      content = $ '<div class="pinbox"><div class="wrapper">' + img + '<h3>' + this.label + ed + del + '</h3><p>' + this.description + '</p><p>Category: ' + this.cat + '</p>'
+      title = '<a href="' + poi.url + '">' + poi.name + '</a>' if poi.url
+      title ?= poi.name
+      content = $ '<div class="pinbox"><div class="wrapper">' + img + '<h3>' + title + ed + del + '</h3><p>' + this.description + '</p><p>Category: ' + this.cat + '</p>'
 
     content.enable_remote_actions
       preprocess: this.populate
