@@ -30,5 +30,5 @@ class Poi < ActiveRecord::Base
     basis[:image] = image.url(:test) if image?
     basis
   end
-
+  
 end

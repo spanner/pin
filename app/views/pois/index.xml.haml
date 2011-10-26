@@ -20,9 +20,10 @@
 					%key popupimage
 					%string
 						- if m.image
-							= "http://pin.spanner.org#{m.image.url(:app)}"
+							= "#{m.image_file_name}"
 					%key popuptext
-					%string= m.description
+					%string
+						&= m.description
 					%key popupurl
 					%string= m.url
 		%key revisionnumber

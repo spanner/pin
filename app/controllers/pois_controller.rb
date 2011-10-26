@@ -1,9 +1,21 @@
 class PoisController < ApplicationController
-  respond_to :html, :xml, :json, :js, :csv
+  respond_to :html, :xml, :json, :js, :zip
 
   def index
     @markers = Poi.all
-    respond_with(@markers)
+    respond_with(@markers) do |format|
+      format.zip {
+        zipfile = Zippy.create '/tmp/pois.zip' do |zip|
+          @markers.each do |m|
+            if m.image?
+              Rails.logger.warn ">>> zipping #{m.image.path(:app)}"
+              zip[m.image_file_name] = File.open(m.image.path(:app))
+            end
+          end
+        end
+        send_file('/tmp/pois.zip')
+      }
+    end
   end
   
   def show
