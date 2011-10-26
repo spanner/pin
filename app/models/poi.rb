@@ -6,7 +6,7 @@ class Poi < ActiveRecord::Base
   
   # accepts_nested_attributes_for :poi_category
   
-  has_attached_file :image, :styles => {:icon => '36x36#', :app => '640x480#', :test => '320x240#'}
+  has_attached_file :image, :styles => {:icon => '36x24#', :app => '640x427#', :test => '320x213#'}
 
   def cat
     poi_category.name if poi_category
