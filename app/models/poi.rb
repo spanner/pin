@@ -1,19 +1,16 @@
-require 'geokit'
-
 class Poi < ActiveRecord::Base
-  belongs_to :poi_category
   belongs_to :poi_set
-  
-  # accepts_nested_attributes_for :poi_category
+  belongs_to :poi_icon
+  default_scope :order => 'name ASC'
   
   has_attached_file :image, :styles => {:icon => '36x24#', :app => '640x427#', :test => '320x213#'}
 
   def cat
-    poi_category.name if poi_category
+    poi_icon.poi_category.name if poi_icon
   end
   
   def icon
-    poi_category.icon if poi_category
+    poi_icon.name if poi_icon
   end
   
   def as_json(options={})
@@ -24,6 +21,7 @@ class Poi < ActiveRecord::Base
       :address => address,
       :lat => lat,
       :lng => lng,
+      :icon => icon,
       :cat => cat,
       :url => url
     }

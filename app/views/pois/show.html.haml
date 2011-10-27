@@ -2,7 +2,7 @@
   - if @poi.image?
     = image_tag @poi.image.url(:test)
 
-  %h3{:id => @poi.id, :class => @poi.poi_category.name}
+  %h3{:id => @poi.id, :class => @poi.cat}
     - if @poi.url
       = link_to @poi.name, @poi.url
     - else

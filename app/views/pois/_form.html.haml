@@ -28,9 +28,9 @@
       = f.file_field :image, :class => 'file'
 
     %p
-      = f.label :poi_category_id
+      = f.label :poi_icon_id
       %br
-      = f.select :poi_category_id, PoiCategory.all.collect {|c| [ c.name, c.id ] }, {:include_blank => false}, {:class => 'standard'}
+      = f.select :poi_icon_id, PoiIcon.all.collect {|c| [ c.name, c.id ] }, {:include_blank => false}, {:class => 'standard'}
 
     %p
       = f.label :url

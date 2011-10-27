@@ -20,6 +20,7 @@ jQuery ($) ->
     rail: new google.maps.MarkerImage '/pins/station.png', size, origin, anchor
     waterbus: new google.maps.MarkerImage '/pins/pier.png', size, origin, anchor
     walk: new google.maps.MarkerImage '/pins/walk.png', size, origin, anchor
+    fireworks: new google.maps.MarkerImage '/pins/fireworks.png', size, origin, anchor
     firstaid: new google.maps.MarkerImage '/pins/redcross.png', size, origin, anchor
     museum: new google.maps.MarkerImage '/pins/museum.png', size, origin, anchor
     history: new google.maps.MarkerImage '/pins/historical.png', size, origin, anchor
@@ -29,10 +30,11 @@ jQuery ($) ->
   
   Pin = (poi) ->
     latLng = poi.latLng || new google.maps.LatLng poi.lat, poi.lng
-    marker_icon = markers[poi.cat] || markers['plain']
+    marker_icon = markers[poi.icon] || markers['plain']
     properties =
       id: poi.id
       name: poi.name
+      icon: poi.icon
       cat: poi.cat
       description: poi.description
       unsaved: poi.id == 'new'

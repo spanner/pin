@@ -6,3 +6,4 @@ tmp/
 .sass-cache/
 config/deploy.rb
 config/database.yml
+public/system/*
