@@ -13,6 +13,14 @@ gem 'coffee-script'
 gem "paperclip", "~> 2.4.0"
 gem "zippy", "~> 0.1.0"
 gem "devise"
+gem "omniauth"
+gem "cancan"
+gem "uuidtools"
+
+group :development do
+  gem 'hpricot'
+  gem 'ruby_parser'
+end
 
 group :production do
   gem "therubyracer", '~> 0.9.8', :require => 'v8'

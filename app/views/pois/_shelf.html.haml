@@ -6,7 +6,7 @@
   %h3
     categories
   %ul#categories
-    - PoiCategory.all.each do |cat|
+    - current_user.poi_categories.each do |cat|
       %li
         = link_to cat.name, '#', :class => 'cat', :rel => cat.name
 

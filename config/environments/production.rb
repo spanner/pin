@@ -1,4 +1,4 @@
-Poier::Application.configure do
+Pin::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -47,9 +47,18 @@ Poier::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => "pin.spanner.org" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => 'mail.spanner.org',
+    :authentication => 'login',
+    :user_name => 'sender@spanner.org',
+    :password => 'r0b0t',
+    :domain => 'mail.spanner.org'
+  }
 
   # Enable threaded mode
-  # config.threadsafe!
+  config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)

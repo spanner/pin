@@ -25,6 +25,7 @@ jQuery ($) ->
     museum: new google.maps.MarkerImage '/pins/museum.png', size, origin, anchor
     history: new google.maps.MarkerImage '/pins/historical.png', size, origin, anchor
     information: new google.maps.MarkerImage '/pins/information.png', size, origin, anchor
+    protest: new google.maps.MarkerImage '/pins/protest.png', size, origin, anchor
     plain: new google.maps.MarkerImage '/pins/plain.png', size, origin, anchor
     shadow: new google.maps.MarkerImage '/pins/shadow.png', size, origin, anchor
   
@@ -134,7 +135,7 @@ jQuery ($) ->
 
   $.fn.init_map = () ->
     this.each ->
-      latlng = new google.maps.LatLng 51.5138040000, -0.0980290000
+      latlng = new google.maps.LatLng 51.5094737914 , -0.1111965698
       options = 
         mapTypeId: google.maps.MapTypeId.ROADMAP
         center: latlng
@@ -151,6 +152,27 @@ jQuery ($) ->
   $.fn.get_pins = () ->
     $.getJSON "/pois.json", {}, (data) =>
       new Pin(poi) for poi in data
+    this
+
+  $.fn.add_procession = () ->
+    sw = new google.maps.LatLng 51.5059409, -0.1159503
+    ne = new google.maps.LatLng 51.5178074, -0.0859706
+    edges = new google.maps.LatLngBounds sw, ne
+    console.log edges
+    procession = new google.maps.GroundOverlay "/overlays/procession_map.jpg", edges
+    console.log procession
+    procession.setMap map
+    this
+
+  $.fn.add_fireworks = () ->
+    sw = new google.maps.LatLng 51.5042003, -0.1238055
+    ne = new google.maps.LatLng 51.5145567, -0.10050325
+    edges = new google.maps.LatLngBounds sw, ne
+    console.log edges
+    fireworks = new google.maps.GroundOverlay "/overlays/fireworks_144dpi.jpg", edges
+    console.log fireworks
+    fireworks.setMap map
+    this
 
   $.fn.geolocator = () ->
     geocoder = new google.maps.Geocoder()

@@ -4,4 +4,4 @@ require File.expand_path('../application', __FILE__)
 CARTOGRAPHER_GMAP_VERSION = 3
 
 # Initialize the rails application
-Poier::Application.initialize!
+Pin::Application.initialize!

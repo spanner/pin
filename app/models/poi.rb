@@ -1,6 +1,7 @@
 class Poi < ActiveRecord::Base
   belongs_to :poi_set
   belongs_to :poi_icon
+  belongs_to :user
   default_scope :order => 'name ASC'
   
   has_attached_file :image, :styles => {:icon => '36x24#', :app => '640x427#', :test => '320x213#'}

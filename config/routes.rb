@@ -1,5 +1,9 @@
-Poier::Application.routes.draw do
-  resources :poi_sets
+Pin::Application.routes.draw do
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
+  resources :poi_sets, :has_many => :pois
+  resources :poi_icons
   resources :poi_categories
   resources :pois
   root :to => 'pois#index'

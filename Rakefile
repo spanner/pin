@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Poier::Application.load_tasks
+Pin::Application.load_tasks
