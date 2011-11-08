@@ -84,7 +84,7 @@ jQuery ($) ->
         this.marker.setAnimation(google.maps.Animation.BOUNCE)
         this.linker.addClass('waiting')
         finished = () =>
-          this.marker.setAnimation(null);
+          this.marker.setAnimation(null)
           this.linker.removeClass('waiting')
         $.ajax
           url: "/pois/" + this.id + ".json"

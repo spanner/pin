@@ -1,0 +1,82 @@
+<dict>
+	<key>gpsmarkers</key>
+	<array>
+		<dict>
+			<key>longitude</key>
+			<real>51.5042003</real>
+			<key>latitude</key>
+			<real>-0.1238055</real>
+			<key>y</key>
+			<integer>0</integer>
+			<key>x</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>longitude</key>
+			<real>51.5145567</real>
+			<key>latitude</key>
+			<real>-0.1005033</real>
+			<key>y</key>
+			<integer>1191</integer>
+			<key>x</key>
+			<integer>1684</integer>
+		</dict>
+	</array>
+	<key>id</key>
+	<integer>1</integer>
+	<key>name</key>
+	<string>Fireworks Map</string>
+	<key>imagepath</key>
+	<string>fireworks_map.jpg</string>
+	<key>nextmap</key>
+	<string></string>
+	<key>previousmap</key>
+	<string>Procession Map</string>
+	<key>showownposition</key>
+	<true/>
+	<key>type</key>
+	<string>custom</string>
+	<key>version</key>
+	<string>1</string>
+</dict>
+<dict>
+	<key>gpsmarkers</key>
+	<array>
+		<dict>
+			<key>longitude</key>
+			<real>51.5059409</real>
+			<key>latitude</key>
+			<real>-0.1159503</real>
+			<key>y</key>
+			<integer>0</integer>
+			<key>x</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>longitude</key>
+			<real>51.5178074</real>
+			<key>latitude</key>
+			<real>-0.0859706</real>
+			<key>y</key>
+			<integer>1071</integer>
+			<key>x</key>
+			<integer>1684</integer>
+		</dict>
+	</array>
+	<key>id</key>
+	<integer>2</integer>
+	<key>name</key>
+	<string>Procession Map</string>
+	<key>imagepath</key>
+	<string>procession_map.jpg</string>
+	<key>nextmap</key>
+	<string>Fireworks Map</string>
+	<key>previousmap</key>
+	<string></string>
+	<key>showownposition</key>
+	<true/>
+	<key>type</key>
+	<string>custom</string>
+	<key>version</key>
+	<string>1</string>
+</dict>
